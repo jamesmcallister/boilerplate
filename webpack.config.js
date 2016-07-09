@@ -5,17 +5,8 @@ var precss       = require('precss');
 var autoprefixer = require('autoprefixer');
 
 module.exports = {
-  devServer: {
-  stats: 'minimal',
-  hot: true,
-  historyApiFallback: true
-},
-  devtool: 'eval',
   entry: {
-    app: ['./src/index',
-      'webpack-dev-server/client?http://localhost:8080',
-      'webpack/hot/only-dev-server',
-      ],
+    app: ['./src/index'],
     vendor: ['react', 'react-dom', 'react-router']
   },
   output: {
@@ -29,13 +20,16 @@ module.exports = {
       {test: /\.css$/, loader: "style-loader!css-loader!postcss-loader"}
       ]
   },
-  postcss: function () {
+    postcss: function () {
         return [precss, autoprefixer];
     },
   plugins: [
+    new webpack.DefinePlugin({
+    'process.env': {
+      'NODE_ENV': JSON.stringify('production')
+    }
+  }),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'chunk',
@@ -46,7 +40,7 @@ module.exports = {
       inject: false,
       template: __dirname + '/index.html',
       appMountId: 'app',
-      title: 'YAB',
+      title: 'Boilerplate ',
       filename: 'index.html',
        minify: {
         collapseWhitespace: true,
