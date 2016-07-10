@@ -1,15 +1,12 @@
 {
+  "extends": [
+    "standard",
+    "standard-react"
+  ],
   "ecmaFeatures": {
     "jsx": true,
     "modules": true
   },
-  "extends": [
-    "standard",
-    "standard-react",
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "prefer-es6-class"
-  ],
   "env": {
     "browser": true,
     "node": true
@@ -24,11 +21,20 @@
       2,
       "never"
     ],
+    "no-unused-vars": 0,
+    "babel/generator-star-spacing": 1,
+    "babel/new-cap": 1,
+    "babel/object-shorthand": 1,
+    "babel/arrow-parens": 1,
+    "babel/no-await-in-loop": 1,
+    "react/jsx-indent": 0,
+    "react/jsx-no-bind": 0,
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,
     "react/react-in-jsx-scope": 2
   },
   "plugins": [
+    "babel",
     "react"
   ]
 }
