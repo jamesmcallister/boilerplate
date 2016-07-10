@@ -2,7 +2,6 @@ import React, {Component, PropTypes} from 'react';
 import { Link } from 'react-router'
 
 import Logo from './Logo'
-// import styles from './Header.css'
 
 
 class Header extends Component {
@@ -24,6 +23,6 @@ class Header extends Component {
 
 Header.propTypes = {
 
-};
+}
 
 export default Header;

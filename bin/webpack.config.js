@@ -10,13 +10,12 @@ module.exports = {
     vendor: ['react', 'react-dom', 'react-router']
   },
   output: {
-    path: __dirname + '/dist',
+    path: __dirname + '/../dist',
     filename: '[name].js'
   },
   module: {
     loaders: [
-      {test: /\.md$/, loader: "html!markdown?gfm=false" },
-      {test: /\.js$/, loaders: ['babel-loader'], include: path.join(__dirname, 'src')},
+      {test: /\.js$/, loaders: ['babel-loader'], include: path.join(__dirname, '../src')},
       {test: /\.css$/, loader: "style-loader!css-loader!postcss-loader"}
       ]
   },
@@ -32,15 +31,15 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'chunk',
-      filename: 'chunked.js'
+      name: 'vendor',
+      filename: 'vendor.js'
     }),
     new HtmlWebpackPlugin({
       hash: true,
       inject: false,
       template: __dirname + '/index.html',
       appMountId: 'app',
-      title: 'Boilerplate ',
+      title: 'YAB',
       filename: 'index.html',
        minify: {
         collapseWhitespace: true,

@@ -1,7 +1,5 @@
 import React, {Component, PropTypes} from 'react';
 
-
-
 class Logo extends Component {
     render() {
         var details = this.props.details
@@ -17,6 +15,6 @@ class Logo extends Component {
 Logo.propTypes = {
     logo_text: PropTypes.string,
     title: PropTypes.string
-};
+}
 
 export default Logo;

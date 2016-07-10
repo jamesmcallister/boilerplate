@@ -4,7 +4,7 @@ import tachyons from 'tachyons'
 import SiteConfig from '../config/SiteConfig'
 
 
-export default class App extends Component {
+class App extends Component {
   render() {
     return (
       <div className='bg-black-10' >
@@ -18,3 +18,5 @@ export default class App extends Component {
     )
   }
 }
+
+export default App
