@@ -1,8 +1,9 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var precss       = require('precss');
-var autoprefixer = require('autoprefixer');
+var path = require('path')
+var webpack = require('webpack')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var precss = require('precss')
+var autoprefixer = require('autoprefixer')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -10,24 +11,27 @@ module.exports = {
     vendor: ['react', 'react-dom', 'react-router']
   },
   output: {
-    path: __dirname + '/../dist',
+    path: path.join(__dirname, '/../dist'),
     filename: '[name].js'
   },
   module: {
     loaders: [
       {test: /\.js$/, loaders: ['babel-loader'], include: path.join(__dirname, '../src')},
-      {test: /\.css$/, loader: "style-loader!css-loader!postcss-loader"}
-      ]
+      {test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader'}
+    ]
   },
-    postcss: function () {
-        return [precss, autoprefixer];
-    },
+  postcss: function () {
+    return [precss, autoprefixer]
+  },
   plugins: [
+    new CopyWebpackPlugin([{
+      from: path.join(__dirname, '../static')
+    }]),
     new webpack.DefinePlugin({
-    'process.env': {
-      'NODE_ENV': JSON.stringify('production')
-    }
-  }),
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
@@ -37,14 +41,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       hash: true,
       inject: false,
-      template: __dirname + '/index.html',
+      template: path.join(__dirname, '/index.html'),
       appMountId: 'app',
-      title: 'YAB',
+      title: 'Seth McAllister',
       filename: 'index.html',
-       minify: {
+      minify: {
         collapseWhitespace: true,
         preserveLineBreaks: true
       }
     })
   ]
-};
+}
