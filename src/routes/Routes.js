@@ -5,7 +5,7 @@ import About from './About'
 import Home from './Home'
 import Contact from './Contact'
 
-module.exports = (
+export default (
   <Route path='/' component={App}>
     <IndexRoute component={Home} />
     <Route path='/about' component={About} />

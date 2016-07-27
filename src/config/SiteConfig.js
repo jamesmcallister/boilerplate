@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   logo_text: 'Boilerpate',
   logo_img: 'blank.jpg',
   title: 'YAB',
