@@ -43,7 +43,7 @@ module.exports = {
       inject: false,
       template: path.join(__dirname, '/index.html'),
       appMountId: 'app',
-      title: 'Seth McAllister',
+      title: 'YAB',
       filename: 'index.html',
       minify: {
         collapseWhitespace: true,
