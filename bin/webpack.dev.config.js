@@ -5,9 +5,14 @@ var precss = require('precss')
 var autoprefixer = require('autoprefixer')
 var NpmInstallPlugin = require('npm-install-webpack-plugin')
 
+var Dashboard = require('webpack-dashboard');
+var DashboardPlugin = require('webpack-dashboard/plugin');
+var dashboard = new Dashboard();
+
 module.exports = {
   devServer: {
     hot: true,
+    quite: true,
     historyApiFallback: true
   },
   devtool: 'eval',
@@ -39,12 +44,13 @@ module.exports = {
       inject: false,
       template: path.join(__dirname, '/index.html'),
       appMountId: 'app',
-      title: 'Seth McAllister | Awesomeness starts here!!',
+      title: 'YAB',
       filename: 'index.html',
       minify: {
         collapseWhitespace: true,
         preserveLineBreaks: true
       }
-    })
+    }),
+    new DashboardPlugin(dashboard.setData)
   ]
 }
